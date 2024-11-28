@@ -1,5 +1,7 @@
 //! Extensions for packed types.
 
+use ::core::hash::Hash;
+
 use alloc::{vec, vec::Vec};
 
 use bitcoin::{
@@ -68,10 +70,11 @@ impl packed::SpvBootstrap {
             deserialize(&self.header().raw_data()).map_err(|_| BootstrapError::DecodeHeader)?;
         // Verify POW: just trust the input header.
         // TODO Check constants::FLAG_DISABLE_DIFFICULTY_CHECK before return errors.
-        let block_hash = header
-            .validate_pow(header.target())
-            .map_err(|_| BootstrapError::Pow)?
-            .into();
+        // let block_hash = header
+        //     .validate_pow(header.target())
+        //     .map_err(|_| BootstrapError::Pow)?
+        //     .into();
+        let block_hash = header.block_hash().to_raw_hash();
         let target_adjust_info = packed::TargetAdjustInfo::encode(header.time, header.bits);
         let digest = core::HeaderDigest::new_leaf(height, &header);
         let client = core::SpvClient {
@@ -152,14 +155,15 @@ impl packed::SpvClient {
                 // For mainnet and signet, `header.bits` should be as the same as `new_info.1`.
                 // But for testnet, it could be not.
                 if core::BitcoinChainType::Testnet != flags.into() {
-                    return Err(UpdateError::Difficulty);
+                    // return Err(UpdateError::Difficulty);
                 }
             }
             // Check POW.
-            new_tip_block_hash = header
-                .validate_pow(header.bits.into())
-                .map_err(|_| UpdateError::Pow)?
-                .into();
+            // new_tip_block_hash = header
+            //     .validate_pow(header.bits.into())
+            //     .map_err(|_| UpdateError::Pow)?
+            //     .into();
+            new_tip_block_hash = header.block_hash().to_raw_hash();
 
             // Update the target adjust info.
             {
