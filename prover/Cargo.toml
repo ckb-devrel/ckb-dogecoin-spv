@@ -10,7 +10,7 @@ repository = "https://github.com/ckb-cell/ckb-bitcoin-spv"
 
 [dependencies]
 ckb-bitcoin-spv-verifier = { version = "0.1.0", path = "../verifier" }
-bitcoin = { version = "0.31", features = ["serde"] }
+bitcoin = { git = "https://github.com/EthanYuan/rust-bitcoin.git", rev = "b484190", features = ["serde"] }
 
 thiserror = "1.0"
 log = "0.4"

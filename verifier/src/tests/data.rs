@@ -8,6 +8,7 @@ use std::{
 use walkdir::WalkDir;
 
 static ROOT: OnceLock<PathBuf> = OnceLock::new();
+static DOGEROOT: OnceLock<PathBuf> = OnceLock::new();
 
 pub(crate) fn root() -> PathBuf {
     ROOT.get_or_init(|| {
@@ -18,6 +19,18 @@ pub(crate) fn root() -> PathBuf {
         workspace_path.join("tests/data")
     })
     .to_owned()
+}
+
+pub(crate) fn dogeroot() -> PathBuf {
+    DOGEROOT
+        .get_or_init(|| {
+            let manifest_dir = env!("CARGO_MANIFEST_DIR");
+            let workspace_path = Path::new(manifest_dir).parent().expect(
+                "workspace directory should be the parent directory of `CARGO_MANIFEST_DIR`",
+            );
+            workspace_path.join("tests/dogecoin")
+        })
+        .to_owned()
 }
 
 pub(crate) fn find_bin_files(in_dir: &str, filename_prefix: &str) -> Vec<PathBuf> {
@@ -33,8 +46,25 @@ pub(crate) fn find_bin_files(in_dir: &str, filename_prefix: &str) -> Vec<PathBuf
     paths
 }
 
+pub(crate) fn find_doge_bin_files(in_dir: &str, filename_prefix: &str) -> Vec<PathBuf> {
+    let paths = WalkDir::new(dogeroot().join(in_dir))
+        .sort_by_file_name()
+        .into_iter()
+        .filter_map(|entry| entry.ok())
+        .filter(check_entry::is_bin)
+        .filter(check_entry::if_starts_with(filename_prefix))
+        .map(|entry| entry.into_path())
+        .collect::<Vec<_>>();
+    assert!(!paths.is_empty());
+    paths
+}
+
 pub(crate) fn find_bin_file(in_dir: &str, filename: &str) -> PathBuf {
     root().join(in_dir).join(filename)
+}
+
+pub(crate) fn _find_dogebin_bin_file(in_dir: &str, filename: &str) -> PathBuf {
+    dogeroot().join(in_dir).join(filename)
 }
 
 mod check_entry {

@@ -86,8 +86,7 @@ checksum = "349f9b6a179ed607305526ca489b34ad0a41aed5f7980fa90eb03160b69598fb"
 [[package]]
 name = "bitcoin"
 version = "0.31.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fd00f3c09b5f21fb357abe32d29946eb8bb7a0862bae62c0b5e4a692acbbe73c"
+source = "git+https://github.com/EthanYuan/rust-bitcoin.git?rev=b484190#b4841906a8781159910fec9b61dcaa3471d63ddb"
 dependencies = [
  "bech32",
  "bitcoin-internals",
