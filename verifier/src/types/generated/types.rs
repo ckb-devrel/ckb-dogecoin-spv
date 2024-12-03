@@ -1384,256 +1384,34 @@ impl ::core::default::Default for Header {
     }
 }
 impl Header {
-    const DEFAULT_VALUE: [u8; 80] = [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    ];
-    pub const TOTAL_SIZE: usize = 80;
+    const DEFAULT_VALUE: [u8; 4] = [0, 0, 0, 0];
     pub const ITEM_SIZE: usize = 1;
-    pub const ITEM_COUNT: usize = 80;
-    pub fn nth0(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(0..1))
-    }
-    pub fn nth1(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(1..2))
-    }
-    pub fn nth2(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(2..3))
-    }
-    pub fn nth3(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(3..4))
-    }
-    pub fn nth4(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(4..5))
-    }
-    pub fn nth5(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(5..6))
-    }
-    pub fn nth6(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(6..7))
-    }
-    pub fn nth7(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(7..8))
-    }
-    pub fn nth8(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(8..9))
-    }
-    pub fn nth9(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(9..10))
-    }
-    pub fn nth10(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(10..11))
-    }
-    pub fn nth11(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(11..12))
-    }
-    pub fn nth12(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(12..13))
-    }
-    pub fn nth13(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(13..14))
-    }
-    pub fn nth14(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(14..15))
-    }
-    pub fn nth15(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(15..16))
-    }
-    pub fn nth16(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(16..17))
-    }
-    pub fn nth17(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(17..18))
-    }
-    pub fn nth18(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(18..19))
-    }
-    pub fn nth19(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(19..20))
-    }
-    pub fn nth20(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(20..21))
-    }
-    pub fn nth21(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(21..22))
-    }
-    pub fn nth22(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(22..23))
-    }
-    pub fn nth23(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(23..24))
-    }
-    pub fn nth24(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(24..25))
-    }
-    pub fn nth25(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(25..26))
-    }
-    pub fn nth26(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(26..27))
-    }
-    pub fn nth27(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(27..28))
-    }
-    pub fn nth28(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(28..29))
-    }
-    pub fn nth29(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(29..30))
-    }
-    pub fn nth30(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(30..31))
-    }
-    pub fn nth31(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(31..32))
-    }
-    pub fn nth32(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(32..33))
-    }
-    pub fn nth33(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(33..34))
-    }
-    pub fn nth34(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(34..35))
-    }
-    pub fn nth35(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(35..36))
-    }
-    pub fn nth36(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(36..37))
-    }
-    pub fn nth37(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(37..38))
-    }
-    pub fn nth38(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(38..39))
-    }
-    pub fn nth39(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(39..40))
-    }
-    pub fn nth40(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(40..41))
-    }
-    pub fn nth41(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(41..42))
-    }
-    pub fn nth42(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(42..43))
-    }
-    pub fn nth43(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(43..44))
-    }
-    pub fn nth44(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(44..45))
-    }
-    pub fn nth45(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(45..46))
-    }
-    pub fn nth46(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(46..47))
-    }
-    pub fn nth47(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(47..48))
-    }
-    pub fn nth48(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(48..49))
-    }
-    pub fn nth49(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(49..50))
-    }
-    pub fn nth50(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(50..51))
-    }
-    pub fn nth51(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(51..52))
-    }
-    pub fn nth52(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(52..53))
-    }
-    pub fn nth53(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(53..54))
-    }
-    pub fn nth54(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(54..55))
-    }
-    pub fn nth55(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(55..56))
-    }
-    pub fn nth56(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(56..57))
-    }
-    pub fn nth57(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(57..58))
-    }
-    pub fn nth58(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(58..59))
-    }
-    pub fn nth59(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(59..60))
-    }
-    pub fn nth60(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(60..61))
-    }
-    pub fn nth61(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(61..62))
-    }
-    pub fn nth62(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(62..63))
-    }
-    pub fn nth63(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(63..64))
-    }
-    pub fn nth64(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(64..65))
-    }
-    pub fn nth65(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(65..66))
-    }
-    pub fn nth66(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(66..67))
-    }
-    pub fn nth67(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(67..68))
-    }
-    pub fn nth68(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(68..69))
-    }
-    pub fn nth69(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(69..70))
-    }
-    pub fn nth70(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(70..71))
-    }
-    pub fn nth71(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(71..72))
-    }
-    pub fn nth72(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(72..73))
-    }
-    pub fn nth73(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(73..74))
-    }
-    pub fn nth74(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(74..75))
-    }
-    pub fn nth75(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(75..76))
-    }
-    pub fn nth76(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(76..77))
-    }
-    pub fn nth77(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(77..78))
-    }
-    pub fn nth78(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(78..79))
-    }
-    pub fn nth79(&self) -> Byte {
-        Byte::new_unchecked(self.0.slice(79..80))
+    pub fn total_size(&self) -> usize {
+        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.item_count()
+    }
+    pub fn item_count(&self) -> usize {
+        molecule::unpack_number(self.as_slice()) as usize
+    }
+    pub fn len(&self) -> usize {
+        self.item_count()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+    pub fn get(&self, idx: usize) -> Option<Byte> {
+        if idx >= self.len() {
+            None
+        } else {
+            Some(self.get_unchecked(idx))
+        }
+    }
+    pub fn get_unchecked(&self, idx: usize) -> Byte {
+        let start = molecule::NUMBER_SIZE + Self::ITEM_SIZE * idx;
+        let end = start + Self::ITEM_SIZE;
+        Byte::new_unchecked(self.0.slice(start..end))
     }
     pub fn raw_data(&self) -> molecule::bytes::Bytes {
-        self.as_bytes()
+        self.0.slice(molecule::NUMBER_SIZE..)
     }
     pub fn as_reader<'r>(&'r self) -> HeaderReader<'r> {
         HeaderReader::new_unchecked(self.as_slice())
@@ -1661,88 +1439,7 @@ impl molecule::prelude::Entity for Header {
         ::core::default::Default::default()
     }
     fn as_builder(self) -> Self::Builder {
-        Self::new_builder().set([
-            self.nth0(),
-            self.nth1(),
-            self.nth2(),
-            self.nth3(),
-            self.nth4(),
-            self.nth5(),
-            self.nth6(),
-            self.nth7(),
-            self.nth8(),
-            self.nth9(),
-            self.nth10(),
-            self.nth11(),
-            self.nth12(),
-            self.nth13(),
-            self.nth14(),
-            self.nth15(),
-            self.nth16(),
-            self.nth17(),
-            self.nth18(),
-            self.nth19(),
-            self.nth20(),
-            self.nth21(),
-            self.nth22(),
-            self.nth23(),
-            self.nth24(),
-            self.nth25(),
-            self.nth26(),
-            self.nth27(),
-            self.nth28(),
-            self.nth29(),
-            self.nth30(),
-            self.nth31(),
-            self.nth32(),
-            self.nth33(),
-            self.nth34(),
-            self.nth35(),
-            self.nth36(),
-            self.nth37(),
-            self.nth38(),
-            self.nth39(),
-            self.nth40(),
-            self.nth41(),
-            self.nth42(),
-            self.nth43(),
-            self.nth44(),
-            self.nth45(),
-            self.nth46(),
-            self.nth47(),
-            self.nth48(),
-            self.nth49(),
-            self.nth50(),
-            self.nth51(),
-            self.nth52(),
-            self.nth53(),
-            self.nth54(),
-            self.nth55(),
-            self.nth56(),
-            self.nth57(),
-            self.nth58(),
-            self.nth59(),
-            self.nth60(),
-            self.nth61(),
-            self.nth62(),
-            self.nth63(),
-            self.nth64(),
-            self.nth65(),
-            self.nth66(),
-            self.nth67(),
-            self.nth68(),
-            self.nth69(),
-            self.nth70(),
-            self.nth71(),
-            self.nth72(),
-            self.nth73(),
-            self.nth74(),
-            self.nth75(),
-            self.nth76(),
-            self.nth77(),
-            self.nth78(),
-            self.nth79(),
-        ])
+        Self::new_builder().extend(self.into_iter())
     }
 }
 #[derive(Clone, Copy)]
@@ -1769,251 +1466,33 @@ impl<'r> ::core::fmt::Display for HeaderReader<'r> {
     }
 }
 impl<'r> HeaderReader<'r> {
-    pub const TOTAL_SIZE: usize = 80;
     pub const ITEM_SIZE: usize = 1;
-    pub const ITEM_COUNT: usize = 80;
-    pub fn nth0(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[0..1])
-    }
-    pub fn nth1(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[1..2])
-    }
-    pub fn nth2(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[2..3])
-    }
-    pub fn nth3(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[3..4])
-    }
-    pub fn nth4(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[4..5])
-    }
-    pub fn nth5(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[5..6])
-    }
-    pub fn nth6(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[6..7])
-    }
-    pub fn nth7(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[7..8])
-    }
-    pub fn nth8(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[8..9])
-    }
-    pub fn nth9(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[9..10])
-    }
-    pub fn nth10(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[10..11])
-    }
-    pub fn nth11(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[11..12])
-    }
-    pub fn nth12(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[12..13])
-    }
-    pub fn nth13(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[13..14])
-    }
-    pub fn nth14(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[14..15])
-    }
-    pub fn nth15(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[15..16])
-    }
-    pub fn nth16(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[16..17])
-    }
-    pub fn nth17(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[17..18])
-    }
-    pub fn nth18(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[18..19])
-    }
-    pub fn nth19(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[19..20])
-    }
-    pub fn nth20(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[20..21])
-    }
-    pub fn nth21(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[21..22])
-    }
-    pub fn nth22(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[22..23])
-    }
-    pub fn nth23(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[23..24])
-    }
-    pub fn nth24(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[24..25])
-    }
-    pub fn nth25(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[25..26])
-    }
-    pub fn nth26(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[26..27])
-    }
-    pub fn nth27(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[27..28])
-    }
-    pub fn nth28(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[28..29])
-    }
-    pub fn nth29(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[29..30])
-    }
-    pub fn nth30(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[30..31])
-    }
-    pub fn nth31(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[31..32])
-    }
-    pub fn nth32(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[32..33])
-    }
-    pub fn nth33(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[33..34])
-    }
-    pub fn nth34(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[34..35])
-    }
-    pub fn nth35(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[35..36])
-    }
-    pub fn nth36(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[36..37])
-    }
-    pub fn nth37(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[37..38])
-    }
-    pub fn nth38(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[38..39])
-    }
-    pub fn nth39(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[39..40])
-    }
-    pub fn nth40(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[40..41])
-    }
-    pub fn nth41(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[41..42])
-    }
-    pub fn nth42(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[42..43])
-    }
-    pub fn nth43(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[43..44])
-    }
-    pub fn nth44(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[44..45])
-    }
-    pub fn nth45(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[45..46])
-    }
-    pub fn nth46(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[46..47])
-    }
-    pub fn nth47(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[47..48])
-    }
-    pub fn nth48(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[48..49])
-    }
-    pub fn nth49(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[49..50])
-    }
-    pub fn nth50(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[50..51])
-    }
-    pub fn nth51(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[51..52])
-    }
-    pub fn nth52(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[52..53])
-    }
-    pub fn nth53(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[53..54])
-    }
-    pub fn nth54(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[54..55])
-    }
-    pub fn nth55(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[55..56])
-    }
-    pub fn nth56(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[56..57])
-    }
-    pub fn nth57(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[57..58])
-    }
-    pub fn nth58(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[58..59])
-    }
-    pub fn nth59(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[59..60])
-    }
-    pub fn nth60(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[60..61])
-    }
-    pub fn nth61(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[61..62])
-    }
-    pub fn nth62(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[62..63])
-    }
-    pub fn nth63(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[63..64])
-    }
-    pub fn nth64(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[64..65])
-    }
-    pub fn nth65(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[65..66])
-    }
-    pub fn nth66(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[66..67])
-    }
-    pub fn nth67(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[67..68])
-    }
-    pub fn nth68(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[68..69])
-    }
-    pub fn nth69(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[69..70])
-    }
-    pub fn nth70(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[70..71])
-    }
-    pub fn nth71(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[71..72])
-    }
-    pub fn nth72(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[72..73])
-    }
-    pub fn nth73(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[73..74])
-    }
-    pub fn nth74(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[74..75])
-    }
-    pub fn nth75(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[75..76])
-    }
-    pub fn nth76(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[76..77])
-    }
-    pub fn nth77(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[77..78])
-    }
-    pub fn nth78(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[78..79])
-    }
-    pub fn nth79(&self) -> ByteReader<'r> {
-        ByteReader::new_unchecked(&self.as_slice()[79..80])
+    pub fn total_size(&self) -> usize {
+        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.item_count()
+    }
+    pub fn item_count(&self) -> usize {
+        molecule::unpack_number(self.as_slice()) as usize
+    }
+    pub fn len(&self) -> usize {
+        self.item_count()
+    }
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+    pub fn get(&self, idx: usize) -> Option<ByteReader<'r>> {
+        if idx >= self.len() {
+            None
+        } else {
+            Some(self.get_unchecked(idx))
+        }
+    }
+    pub fn get_unchecked(&self, idx: usize) -> ByteReader<'r> {
+        let start = molecule::NUMBER_SIZE + Self::ITEM_SIZE * idx;
+        let end = start + Self::ITEM_SIZE;
+        ByteReader::new_unchecked(&self.as_slice()[start..end])
     }
     pub fn raw_data(&self) -> &'r [u8] {
-        self.as_slice()
+        &self.as_slice()[molecule::NUMBER_SIZE..]
     }
 }
 impl<'r> molecule::prelude::Reader<'r> for HeaderReader<'r> {
@@ -2031,520 +1510,58 @@ impl<'r> molecule::prelude::Reader<'r> for HeaderReader<'r> {
     fn verify(slice: &[u8], _compatible: bool) -> molecule::error::VerificationResult<()> {
         use molecule::verification_error as ve;
         let slice_len = slice.len();
-        if slice_len != Self::TOTAL_SIZE {
-            return ve!(Self, TotalSizeNotMatch, Self::TOTAL_SIZE, slice_len);
+        if slice_len < molecule::NUMBER_SIZE {
+            return ve!(Self, HeaderIsBroken, molecule::NUMBER_SIZE, slice_len);
+        }
+        let item_count = molecule::unpack_number(slice) as usize;
+        if item_count == 0 {
+            if slice_len != molecule::NUMBER_SIZE {
+                return ve!(Self, TotalSizeNotMatch, molecule::NUMBER_SIZE, slice_len);
+            }
+            return Ok(());
+        }
+        let total_size = molecule::NUMBER_SIZE + Self::ITEM_SIZE * item_count;
+        if slice_len != total_size {
+            return ve!(Self, TotalSizeNotMatch, total_size, slice_len);
         }
         Ok(())
     }
 }
-pub struct HeaderBuilder(pub(crate) [Byte; 80]);
-impl ::core::fmt::Debug for HeaderBuilder {
-    fn fmt(&self, f: &mut ::core::fmt::Formatter) -> ::core::fmt::Result {
-        write!(f, "{}({:?})", Self::NAME, &self.0[..])
-    }
-}
-impl ::core::default::Default for HeaderBuilder {
-    fn default() -> Self {
-        HeaderBuilder([
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-            Byte::default(),
-        ])
-    }
-}
+#[derive(Debug, Default)]
+pub struct HeaderBuilder(pub(crate) Vec<Byte>);
 impl HeaderBuilder {
-    pub const TOTAL_SIZE: usize = 80;
     pub const ITEM_SIZE: usize = 1;
-    pub const ITEM_COUNT: usize = 80;
-    pub fn set(mut self, v: [Byte; 80]) -> Self {
+    pub fn set(mut self, v: Vec<Byte>) -> Self {
         self.0 = v;
         self
     }
-    pub fn nth0(mut self, v: Byte) -> Self {
-        self.0[0] = v;
+    pub fn push(mut self, v: Byte) -> Self {
+        self.0.push(v);
         self
     }
-    pub fn nth1(mut self, v: Byte) -> Self {
-        self.0[1] = v;
+    pub fn extend<T: ::core::iter::IntoIterator<Item = Byte>>(mut self, iter: T) -> Self {
+        for elem in iter {
+            self.0.push(elem);
+        }
         self
     }
-    pub fn nth2(mut self, v: Byte) -> Self {
-        self.0[2] = v;
-        self
-    }
-    pub fn nth3(mut self, v: Byte) -> Self {
-        self.0[3] = v;
-        self
-    }
-    pub fn nth4(mut self, v: Byte) -> Self {
-        self.0[4] = v;
-        self
-    }
-    pub fn nth5(mut self, v: Byte) -> Self {
-        self.0[5] = v;
-        self
-    }
-    pub fn nth6(mut self, v: Byte) -> Self {
-        self.0[6] = v;
-        self
-    }
-    pub fn nth7(mut self, v: Byte) -> Self {
-        self.0[7] = v;
-        self
-    }
-    pub fn nth8(mut self, v: Byte) -> Self {
-        self.0[8] = v;
-        self
-    }
-    pub fn nth9(mut self, v: Byte) -> Self {
-        self.0[9] = v;
-        self
-    }
-    pub fn nth10(mut self, v: Byte) -> Self {
-        self.0[10] = v;
-        self
-    }
-    pub fn nth11(mut self, v: Byte) -> Self {
-        self.0[11] = v;
-        self
-    }
-    pub fn nth12(mut self, v: Byte) -> Self {
-        self.0[12] = v;
-        self
-    }
-    pub fn nth13(mut self, v: Byte) -> Self {
-        self.0[13] = v;
-        self
-    }
-    pub fn nth14(mut self, v: Byte) -> Self {
-        self.0[14] = v;
-        self
-    }
-    pub fn nth15(mut self, v: Byte) -> Self {
-        self.0[15] = v;
-        self
-    }
-    pub fn nth16(mut self, v: Byte) -> Self {
-        self.0[16] = v;
-        self
-    }
-    pub fn nth17(mut self, v: Byte) -> Self {
-        self.0[17] = v;
-        self
-    }
-    pub fn nth18(mut self, v: Byte) -> Self {
-        self.0[18] = v;
-        self
-    }
-    pub fn nth19(mut self, v: Byte) -> Self {
-        self.0[19] = v;
-        self
-    }
-    pub fn nth20(mut self, v: Byte) -> Self {
-        self.0[20] = v;
-        self
-    }
-    pub fn nth21(mut self, v: Byte) -> Self {
-        self.0[21] = v;
-        self
-    }
-    pub fn nth22(mut self, v: Byte) -> Self {
-        self.0[22] = v;
-        self
-    }
-    pub fn nth23(mut self, v: Byte) -> Self {
-        self.0[23] = v;
-        self
-    }
-    pub fn nth24(mut self, v: Byte) -> Self {
-        self.0[24] = v;
-        self
-    }
-    pub fn nth25(mut self, v: Byte) -> Self {
-        self.0[25] = v;
-        self
-    }
-    pub fn nth26(mut self, v: Byte) -> Self {
-        self.0[26] = v;
-        self
-    }
-    pub fn nth27(mut self, v: Byte) -> Self {
-        self.0[27] = v;
-        self
-    }
-    pub fn nth28(mut self, v: Byte) -> Self {
-        self.0[28] = v;
-        self
-    }
-    pub fn nth29(mut self, v: Byte) -> Self {
-        self.0[29] = v;
-        self
-    }
-    pub fn nth30(mut self, v: Byte) -> Self {
-        self.0[30] = v;
-        self
-    }
-    pub fn nth31(mut self, v: Byte) -> Self {
-        self.0[31] = v;
-        self
-    }
-    pub fn nth32(mut self, v: Byte) -> Self {
-        self.0[32] = v;
-        self
-    }
-    pub fn nth33(mut self, v: Byte) -> Self {
-        self.0[33] = v;
-        self
-    }
-    pub fn nth34(mut self, v: Byte) -> Self {
-        self.0[34] = v;
-        self
-    }
-    pub fn nth35(mut self, v: Byte) -> Self {
-        self.0[35] = v;
-        self
-    }
-    pub fn nth36(mut self, v: Byte) -> Self {
-        self.0[36] = v;
-        self
-    }
-    pub fn nth37(mut self, v: Byte) -> Self {
-        self.0[37] = v;
-        self
-    }
-    pub fn nth38(mut self, v: Byte) -> Self {
-        self.0[38] = v;
-        self
-    }
-    pub fn nth39(mut self, v: Byte) -> Self {
-        self.0[39] = v;
-        self
-    }
-    pub fn nth40(mut self, v: Byte) -> Self {
-        self.0[40] = v;
-        self
-    }
-    pub fn nth41(mut self, v: Byte) -> Self {
-        self.0[41] = v;
-        self
-    }
-    pub fn nth42(mut self, v: Byte) -> Self {
-        self.0[42] = v;
-        self
-    }
-    pub fn nth43(mut self, v: Byte) -> Self {
-        self.0[43] = v;
-        self
-    }
-    pub fn nth44(mut self, v: Byte) -> Self {
-        self.0[44] = v;
-        self
-    }
-    pub fn nth45(mut self, v: Byte) -> Self {
-        self.0[45] = v;
-        self
-    }
-    pub fn nth46(mut self, v: Byte) -> Self {
-        self.0[46] = v;
-        self
-    }
-    pub fn nth47(mut self, v: Byte) -> Self {
-        self.0[47] = v;
-        self
-    }
-    pub fn nth48(mut self, v: Byte) -> Self {
-        self.0[48] = v;
-        self
-    }
-    pub fn nth49(mut self, v: Byte) -> Self {
-        self.0[49] = v;
-        self
-    }
-    pub fn nth50(mut self, v: Byte) -> Self {
-        self.0[50] = v;
-        self
-    }
-    pub fn nth51(mut self, v: Byte) -> Self {
-        self.0[51] = v;
-        self
-    }
-    pub fn nth52(mut self, v: Byte) -> Self {
-        self.0[52] = v;
-        self
-    }
-    pub fn nth53(mut self, v: Byte) -> Self {
-        self.0[53] = v;
-        self
-    }
-    pub fn nth54(mut self, v: Byte) -> Self {
-        self.0[54] = v;
-        self
-    }
-    pub fn nth55(mut self, v: Byte) -> Self {
-        self.0[55] = v;
-        self
-    }
-    pub fn nth56(mut self, v: Byte) -> Self {
-        self.0[56] = v;
-        self
-    }
-    pub fn nth57(mut self, v: Byte) -> Self {
-        self.0[57] = v;
-        self
-    }
-    pub fn nth58(mut self, v: Byte) -> Self {
-        self.0[58] = v;
-        self
-    }
-    pub fn nth59(mut self, v: Byte) -> Self {
-        self.0[59] = v;
-        self
-    }
-    pub fn nth60(mut self, v: Byte) -> Self {
-        self.0[60] = v;
-        self
-    }
-    pub fn nth61(mut self, v: Byte) -> Self {
-        self.0[61] = v;
-        self
-    }
-    pub fn nth62(mut self, v: Byte) -> Self {
-        self.0[62] = v;
-        self
-    }
-    pub fn nth63(mut self, v: Byte) -> Self {
-        self.0[63] = v;
-        self
-    }
-    pub fn nth64(mut self, v: Byte) -> Self {
-        self.0[64] = v;
-        self
-    }
-    pub fn nth65(mut self, v: Byte) -> Self {
-        self.0[65] = v;
-        self
-    }
-    pub fn nth66(mut self, v: Byte) -> Self {
-        self.0[66] = v;
-        self
-    }
-    pub fn nth67(mut self, v: Byte) -> Self {
-        self.0[67] = v;
-        self
-    }
-    pub fn nth68(mut self, v: Byte) -> Self {
-        self.0[68] = v;
-        self
-    }
-    pub fn nth69(mut self, v: Byte) -> Self {
-        self.0[69] = v;
-        self
-    }
-    pub fn nth70(mut self, v: Byte) -> Self {
-        self.0[70] = v;
-        self
-    }
-    pub fn nth71(mut self, v: Byte) -> Self {
-        self.0[71] = v;
-        self
-    }
-    pub fn nth72(mut self, v: Byte) -> Self {
-        self.0[72] = v;
-        self
-    }
-    pub fn nth73(mut self, v: Byte) -> Self {
-        self.0[73] = v;
-        self
-    }
-    pub fn nth74(mut self, v: Byte) -> Self {
-        self.0[74] = v;
-        self
-    }
-    pub fn nth75(mut self, v: Byte) -> Self {
-        self.0[75] = v;
-        self
-    }
-    pub fn nth76(mut self, v: Byte) -> Self {
-        self.0[76] = v;
-        self
-    }
-    pub fn nth77(mut self, v: Byte) -> Self {
-        self.0[77] = v;
-        self
-    }
-    pub fn nth78(mut self, v: Byte) -> Self {
-        self.0[78] = v;
-        self
-    }
-    pub fn nth79(mut self, v: Byte) -> Self {
-        self.0[79] = v;
-        self
+    pub fn replace(&mut self, index: usize, v: Byte) -> Option<Byte> {
+        self.0
+            .get_mut(index)
+            .map(|item| ::core::mem::replace(item, v))
     }
 }
 impl molecule::prelude::Builder for HeaderBuilder {
     type Entity = Header;
     const NAME: &'static str = "HeaderBuilder";
     fn expected_length(&self) -> usize {
-        Self::TOTAL_SIZE
+        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.0.len()
     }
     fn write<W: molecule::io::Write>(&self, writer: &mut W) -> molecule::io::Result<()> {
-        writer.write_all(self.0[0].as_slice())?;
-        writer.write_all(self.0[1].as_slice())?;
-        writer.write_all(self.0[2].as_slice())?;
-        writer.write_all(self.0[3].as_slice())?;
-        writer.write_all(self.0[4].as_slice())?;
-        writer.write_all(self.0[5].as_slice())?;
-        writer.write_all(self.0[6].as_slice())?;
-        writer.write_all(self.0[7].as_slice())?;
-        writer.write_all(self.0[8].as_slice())?;
-        writer.write_all(self.0[9].as_slice())?;
-        writer.write_all(self.0[10].as_slice())?;
-        writer.write_all(self.0[11].as_slice())?;
-        writer.write_all(self.0[12].as_slice())?;
-        writer.write_all(self.0[13].as_slice())?;
-        writer.write_all(self.0[14].as_slice())?;
-        writer.write_all(self.0[15].as_slice())?;
-        writer.write_all(self.0[16].as_slice())?;
-        writer.write_all(self.0[17].as_slice())?;
-        writer.write_all(self.0[18].as_slice())?;
-        writer.write_all(self.0[19].as_slice())?;
-        writer.write_all(self.0[20].as_slice())?;
-        writer.write_all(self.0[21].as_slice())?;
-        writer.write_all(self.0[22].as_slice())?;
-        writer.write_all(self.0[23].as_slice())?;
-        writer.write_all(self.0[24].as_slice())?;
-        writer.write_all(self.0[25].as_slice())?;
-        writer.write_all(self.0[26].as_slice())?;
-        writer.write_all(self.0[27].as_slice())?;
-        writer.write_all(self.0[28].as_slice())?;
-        writer.write_all(self.0[29].as_slice())?;
-        writer.write_all(self.0[30].as_slice())?;
-        writer.write_all(self.0[31].as_slice())?;
-        writer.write_all(self.0[32].as_slice())?;
-        writer.write_all(self.0[33].as_slice())?;
-        writer.write_all(self.0[34].as_slice())?;
-        writer.write_all(self.0[35].as_slice())?;
-        writer.write_all(self.0[36].as_slice())?;
-        writer.write_all(self.0[37].as_slice())?;
-        writer.write_all(self.0[38].as_slice())?;
-        writer.write_all(self.0[39].as_slice())?;
-        writer.write_all(self.0[40].as_slice())?;
-        writer.write_all(self.0[41].as_slice())?;
-        writer.write_all(self.0[42].as_slice())?;
-        writer.write_all(self.0[43].as_slice())?;
-        writer.write_all(self.0[44].as_slice())?;
-        writer.write_all(self.0[45].as_slice())?;
-        writer.write_all(self.0[46].as_slice())?;
-        writer.write_all(self.0[47].as_slice())?;
-        writer.write_all(self.0[48].as_slice())?;
-        writer.write_all(self.0[49].as_slice())?;
-        writer.write_all(self.0[50].as_slice())?;
-        writer.write_all(self.0[51].as_slice())?;
-        writer.write_all(self.0[52].as_slice())?;
-        writer.write_all(self.0[53].as_slice())?;
-        writer.write_all(self.0[54].as_slice())?;
-        writer.write_all(self.0[55].as_slice())?;
-        writer.write_all(self.0[56].as_slice())?;
-        writer.write_all(self.0[57].as_slice())?;
-        writer.write_all(self.0[58].as_slice())?;
-        writer.write_all(self.0[59].as_slice())?;
-        writer.write_all(self.0[60].as_slice())?;
-        writer.write_all(self.0[61].as_slice())?;
-        writer.write_all(self.0[62].as_slice())?;
-        writer.write_all(self.0[63].as_slice())?;
-        writer.write_all(self.0[64].as_slice())?;
-        writer.write_all(self.0[65].as_slice())?;
-        writer.write_all(self.0[66].as_slice())?;
-        writer.write_all(self.0[67].as_slice())?;
-        writer.write_all(self.0[68].as_slice())?;
-        writer.write_all(self.0[69].as_slice())?;
-        writer.write_all(self.0[70].as_slice())?;
-        writer.write_all(self.0[71].as_slice())?;
-        writer.write_all(self.0[72].as_slice())?;
-        writer.write_all(self.0[73].as_slice())?;
-        writer.write_all(self.0[74].as_slice())?;
-        writer.write_all(self.0[75].as_slice())?;
-        writer.write_all(self.0[76].as_slice())?;
-        writer.write_all(self.0[77].as_slice())?;
-        writer.write_all(self.0[78].as_slice())?;
-        writer.write_all(self.0[79].as_slice())?;
+        writer.write_all(&molecule::pack_number(self.0.len() as molecule::Number))?;
+        for inner in &self.0[..] {
+            writer.write_all(inner.as_slice())?;
+        }
         Ok(())
     }
     fn build(&self) -> Self::Entity {
@@ -2552,6 +1569,32 @@ impl molecule::prelude::Builder for HeaderBuilder {
         self.write(&mut inner)
             .unwrap_or_else(|_| panic!("{} build should be ok", Self::NAME));
         Header::new_unchecked(inner.into())
+    }
+}
+pub struct HeaderIterator(Header, usize, usize);
+impl ::core::iter::Iterator for HeaderIterator {
+    type Item = Byte;
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.1 >= self.2 {
+            None
+        } else {
+            let ret = self.0.get_unchecked(self.1);
+            self.1 += 1;
+            Some(ret)
+        }
+    }
+}
+impl ::core::iter::ExactSizeIterator for HeaderIterator {
+    fn len(&self) -> usize {
+        self.2 - self.1
+    }
+}
+impl ::core::iter::IntoIterator for Header {
+    type Item = Byte;
+    type IntoIter = HeaderIterator;
+    fn into_iter(self) -> Self::IntoIter {
+        let len = self.len();
+        HeaderIterator(self, 0, len)
     }
 }
 #[derive(Clone)]
@@ -2590,13 +1633,16 @@ impl ::core::default::Default for HeaderVec {
     }
 }
 impl HeaderVec {
-    const DEFAULT_VALUE: [u8; 4] = [0, 0, 0, 0];
-    pub const ITEM_SIZE: usize = 80;
+    const DEFAULT_VALUE: [u8; 4] = [4, 0, 0, 0];
     pub fn total_size(&self) -> usize {
-        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.item_count()
+        molecule::unpack_number(self.as_slice()) as usize
     }
     pub fn item_count(&self) -> usize {
-        molecule::unpack_number(self.as_slice()) as usize
+        if self.total_size() == molecule::NUMBER_SIZE {
+            0
+        } else {
+            (molecule::unpack_number(&self.as_slice()[molecule::NUMBER_SIZE..]) as usize / 4) - 1
+        }
     }
     pub fn len(&self) -> usize {
         self.item_count()
@@ -2612,9 +1658,16 @@ impl HeaderVec {
         }
     }
     pub fn get_unchecked(&self, idx: usize) -> Header {
-        let start = molecule::NUMBER_SIZE + Self::ITEM_SIZE * idx;
-        let end = start + Self::ITEM_SIZE;
-        Header::new_unchecked(self.0.slice(start..end))
+        let slice = self.as_slice();
+        let start_idx = molecule::NUMBER_SIZE * (1 + idx);
+        let start = molecule::unpack_number(&slice[start_idx..]) as usize;
+        if idx == self.len() - 1 {
+            Header::new_unchecked(self.0.slice(start..))
+        } else {
+            let end_idx = start_idx + molecule::NUMBER_SIZE;
+            let end = molecule::unpack_number(&slice[end_idx..]) as usize;
+            Header::new_unchecked(self.0.slice(start..end))
+        }
     }
     pub fn as_reader<'r>(&'r self) -> HeaderVecReader<'r> {
         HeaderVecReader::new_unchecked(self.as_slice())
@@ -2675,12 +1728,15 @@ impl<'r> ::core::fmt::Display for HeaderVecReader<'r> {
     }
 }
 impl<'r> HeaderVecReader<'r> {
-    pub const ITEM_SIZE: usize = 80;
     pub fn total_size(&self) -> usize {
-        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.item_count()
+        molecule::unpack_number(self.as_slice()) as usize
     }
     pub fn item_count(&self) -> usize {
-        molecule::unpack_number(self.as_slice()) as usize
+        if self.total_size() == molecule::NUMBER_SIZE {
+            0
+        } else {
+            (molecule::unpack_number(&self.as_slice()[molecule::NUMBER_SIZE..]) as usize / 4) - 1
+        }
     }
     pub fn len(&self) -> usize {
         self.item_count()
@@ -2696,9 +1752,16 @@ impl<'r> HeaderVecReader<'r> {
         }
     }
     pub fn get_unchecked(&self, idx: usize) -> HeaderReader<'r> {
-        let start = molecule::NUMBER_SIZE + Self::ITEM_SIZE * idx;
-        let end = start + Self::ITEM_SIZE;
-        HeaderReader::new_unchecked(&self.as_slice()[start..end])
+        let slice = self.as_slice();
+        let start_idx = molecule::NUMBER_SIZE * (1 + idx);
+        let start = molecule::unpack_number(&slice[start_idx..]) as usize;
+        if idx == self.len() - 1 {
+            HeaderReader::new_unchecked(&self.as_slice()[start..])
+        } else {
+            let end_idx = start_idx + molecule::NUMBER_SIZE;
+            let end = molecule::unpack_number(&slice[end_idx..]) as usize;
+            HeaderReader::new_unchecked(&self.as_slice()[start..end])
+        }
     }
 }
 impl<'r> molecule::prelude::Reader<'r> for HeaderVecReader<'r> {
@@ -2713,22 +1776,46 @@ impl<'r> molecule::prelude::Reader<'r> for HeaderVecReader<'r> {
     fn as_slice(&self) -> &'r [u8] {
         self.0
     }
-    fn verify(slice: &[u8], _compatible: bool) -> molecule::error::VerificationResult<()> {
+    fn verify(slice: &[u8], compatible: bool) -> molecule::error::VerificationResult<()> {
         use molecule::verification_error as ve;
         let slice_len = slice.len();
         if slice_len < molecule::NUMBER_SIZE {
             return ve!(Self, HeaderIsBroken, molecule::NUMBER_SIZE, slice_len);
         }
-        let item_count = molecule::unpack_number(slice) as usize;
-        if item_count == 0 {
-            if slice_len != molecule::NUMBER_SIZE {
-                return ve!(Self, TotalSizeNotMatch, molecule::NUMBER_SIZE, slice_len);
-            }
-            return Ok(());
-        }
-        let total_size = molecule::NUMBER_SIZE + Self::ITEM_SIZE * item_count;
+        let total_size = molecule::unpack_number(slice) as usize;
         if slice_len != total_size {
             return ve!(Self, TotalSizeNotMatch, total_size, slice_len);
+        }
+        if slice_len == molecule::NUMBER_SIZE {
+            return Ok(());
+        }
+        if slice_len < molecule::NUMBER_SIZE * 2 {
+            return ve!(
+                Self,
+                TotalSizeNotMatch,
+                molecule::NUMBER_SIZE * 2,
+                slice_len
+            );
+        }
+        let offset_first = molecule::unpack_number(&slice[molecule::NUMBER_SIZE..]) as usize;
+        if offset_first % molecule::NUMBER_SIZE != 0 || offset_first < molecule::NUMBER_SIZE * 2 {
+            return ve!(Self, OffsetsNotMatch);
+        }
+        if slice_len < offset_first {
+            return ve!(Self, HeaderIsBroken, offset_first, slice_len);
+        }
+        let mut offsets: Vec<usize> = slice[molecule::NUMBER_SIZE..offset_first]
+            .chunks_exact(molecule::NUMBER_SIZE)
+            .map(|x| molecule::unpack_number(x) as usize)
+            .collect();
+        offsets.push(total_size);
+        if offsets.windows(2).any(|i| i[0] > i[1]) {
+            return ve!(Self, OffsetsNotMatch);
+        }
+        for pair in offsets.windows(2) {
+            let start = pair[0];
+            let end = pair[1];
+            HeaderReader::verify(&slice[start..end], compatible)?;
         }
         Ok(())
     }
@@ -2736,7 +1823,6 @@ impl<'r> molecule::prelude::Reader<'r> for HeaderVecReader<'r> {
 #[derive(Debug, Default)]
 pub struct HeaderVecBuilder(pub(crate) Vec<Header>);
 impl HeaderVecBuilder {
-    pub const ITEM_SIZE: usize = 80;
     pub fn set(mut self, v: Vec<Header>) -> Self {
         self.0 = v;
         self
@@ -2761,12 +1847,37 @@ impl molecule::prelude::Builder for HeaderVecBuilder {
     type Entity = HeaderVec;
     const NAME: &'static str = "HeaderVecBuilder";
     fn expected_length(&self) -> usize {
-        molecule::NUMBER_SIZE + Self::ITEM_SIZE * self.0.len()
+        molecule::NUMBER_SIZE * (self.0.len() + 1)
+            + self
+                .0
+                .iter()
+                .map(|inner| inner.as_slice().len())
+                .sum::<usize>()
     }
     fn write<W: molecule::io::Write>(&self, writer: &mut W) -> molecule::io::Result<()> {
-        writer.write_all(&molecule::pack_number(self.0.len() as molecule::Number))?;
-        for inner in &self.0[..] {
-            writer.write_all(inner.as_slice())?;
+        let item_count = self.0.len();
+        if item_count == 0 {
+            writer.write_all(&molecule::pack_number(
+                molecule::NUMBER_SIZE as molecule::Number,
+            ))?;
+        } else {
+            let (total_size, offsets) = self.0.iter().fold(
+                (
+                    molecule::NUMBER_SIZE * (item_count + 1),
+                    Vec::with_capacity(item_count),
+                ),
+                |(start, mut offsets), inner| {
+                    offsets.push(start);
+                    (start + inner.as_slice().len(), offsets)
+                },
+            );
+            writer.write_all(&molecule::pack_number(total_size as molecule::Number))?;
+            for offset in offsets.into_iter() {
+                writer.write_all(&molecule::pack_number(offset as molecule::Number))?;
+            }
+            for inner in self.0.iter() {
+                writer.write_all(inner.as_slice())?;
+            }
         }
         Ok(())
     }
@@ -4283,6 +3394,10 @@ impl ::core::fmt::Display for SpvBootstrap {
         write!(f, "{} {{ ", Self::NAME)?;
         write!(f, "{}: {}", "height", self.height())?;
         write!(f, ", {}: {}", "header", self.header())?;
+        let extra_count = self.count_extra_fields();
+        if extra_count != 0 {
+            write!(f, ", .. ({} fields)", extra_count)?;
+        }
         write!(f, " }}")
     }
 }
@@ -4293,19 +3408,41 @@ impl ::core::default::Default for SpvBootstrap {
     }
 }
 impl SpvBootstrap {
-    const DEFAULT_VALUE: [u8; 84] = [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    const DEFAULT_VALUE: [u8; 20] = [
+        20, 0, 0, 0, 12, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     ];
-    pub const TOTAL_SIZE: usize = 84;
-    pub const FIELD_SIZES: [usize; 2] = [4, 80];
     pub const FIELD_COUNT: usize = 2;
+    pub fn total_size(&self) -> usize {
+        molecule::unpack_number(self.as_slice()) as usize
+    }
+    pub fn field_count(&self) -> usize {
+        if self.total_size() == molecule::NUMBER_SIZE {
+            0
+        } else {
+            (molecule::unpack_number(&self.as_slice()[molecule::NUMBER_SIZE..]) as usize / 4) - 1
+        }
+    }
+    pub fn count_extra_fields(&self) -> usize {
+        self.field_count() - Self::FIELD_COUNT
+    }
+    pub fn has_extra_fields(&self) -> bool {
+        Self::FIELD_COUNT != self.field_count()
+    }
     pub fn height(&self) -> Uint32 {
-        Uint32::new_unchecked(self.0.slice(0..4))
+        let slice = self.as_slice();
+        let start = molecule::unpack_number(&slice[4..]) as usize;
+        let end = molecule::unpack_number(&slice[8..]) as usize;
+        Uint32::new_unchecked(self.0.slice(start..end))
     }
     pub fn header(&self) -> Header {
-        Header::new_unchecked(self.0.slice(4..84))
+        let slice = self.as_slice();
+        let start = molecule::unpack_number(&slice[8..]) as usize;
+        if self.has_extra_fields() {
+            let end = molecule::unpack_number(&slice[12..]) as usize;
+            Header::new_unchecked(self.0.slice(start..end))
+        } else {
+            Header::new_unchecked(self.0.slice(start..))
+        }
     }
     pub fn as_reader<'r>(&'r self) -> SpvBootstrapReader<'r> {
         SpvBootstrapReader::new_unchecked(self.as_slice())
@@ -4359,18 +3496,46 @@ impl<'r> ::core::fmt::Display for SpvBootstrapReader<'r> {
         write!(f, "{} {{ ", Self::NAME)?;
         write!(f, "{}: {}", "height", self.height())?;
         write!(f, ", {}: {}", "header", self.header())?;
+        let extra_count = self.count_extra_fields();
+        if extra_count != 0 {
+            write!(f, ", .. ({} fields)", extra_count)?;
+        }
         write!(f, " }}")
     }
 }
 impl<'r> SpvBootstrapReader<'r> {
-    pub const TOTAL_SIZE: usize = 84;
-    pub const FIELD_SIZES: [usize; 2] = [4, 80];
     pub const FIELD_COUNT: usize = 2;
+    pub fn total_size(&self) -> usize {
+        molecule::unpack_number(self.as_slice()) as usize
+    }
+    pub fn field_count(&self) -> usize {
+        if self.total_size() == molecule::NUMBER_SIZE {
+            0
+        } else {
+            (molecule::unpack_number(&self.as_slice()[molecule::NUMBER_SIZE..]) as usize / 4) - 1
+        }
+    }
+    pub fn count_extra_fields(&self) -> usize {
+        self.field_count() - Self::FIELD_COUNT
+    }
+    pub fn has_extra_fields(&self) -> bool {
+        Self::FIELD_COUNT != self.field_count()
+    }
     pub fn height(&self) -> Uint32Reader<'r> {
-        Uint32Reader::new_unchecked(&self.as_slice()[0..4])
+        let slice = self.as_slice();
+        let start = molecule::unpack_number(&slice[4..]) as usize;
+        let end = molecule::unpack_number(&slice[8..]) as usize;
+        Uint32Reader::new_unchecked(&self.as_slice()[start..end])
     }
     pub fn header(&self) -> HeaderReader<'r> {
-        HeaderReader::new_unchecked(&self.as_slice()[4..84])
+        let slice = self.as_slice();
+        let start = molecule::unpack_number(&slice[8..]) as usize;
+        if self.has_extra_fields() {
+            let end = molecule::unpack_number(&slice[12..]) as usize;
+            HeaderReader::new_unchecked(&self.as_slice()[start..end])
+        } else {
+            HeaderReader::new_unchecked(&self.as_slice()[start..])
+        }
     }
 }
 impl<'r> molecule::prelude::Reader<'r> for SpvBootstrapReader<'r> {
@@ -4385,12 +3550,42 @@ impl<'r> molecule::prelude::Reader<'r> for SpvBootstrapReader<'r> {
     fn as_slice(&self) -> &'r [u8] {
         self.0
     }
-    fn verify(slice: &[u8], _compatible: bool) -> molecule::error::VerificationResult<()> {
+    fn verify(slice: &[u8], compatible: bool) -> molecule::error::VerificationResult<()> {
         use molecule::verification_error as ve;
         let slice_len = slice.len();
-        if slice_len != Self::TOTAL_SIZE {
-            return ve!(Self, TotalSizeNotMatch, Self::TOTAL_SIZE, slice_len);
+        if slice_len < molecule::NUMBER_SIZE {
+            return ve!(Self, HeaderIsBroken, molecule::NUMBER_SIZE, slice_len);
         }
+        let total_size = molecule::unpack_number(slice) as usize;
+        if slice_len != total_size {
+            return ve!(Self, TotalSizeNotMatch, total_size, slice_len);
+        }
+        if slice_len < molecule::NUMBER_SIZE * 2 {
+            return ve!(Self, HeaderIsBroken, molecule::NUMBER_SIZE * 2, slice_len);
+        }
+        let offset_first = molecule::unpack_number(&slice[molecule::NUMBER_SIZE..]) as usize;
+        if offset_first % molecule::NUMBER_SIZE != 0 || offset_first < molecule::NUMBER_SIZE * 2 {
+            return ve!(Self, OffsetsNotMatch);
+        }
+        if slice_len < offset_first {
+            return ve!(Self, HeaderIsBroken, offset_first, slice_len);
+        }
+        let field_count = offset_first / molecule::NUMBER_SIZE - 1;
+        if field_count < Self::FIELD_COUNT {
+            return ve!(Self, FieldCountNotMatch, Self::FIELD_COUNT, field_count);
+        } else if !compatible && field_count > Self::FIELD_COUNT {
+            return ve!(Self, FieldCountNotMatch, Self::FIELD_COUNT, field_count);
+        };
+        let mut offsets: Vec<usize> = slice[molecule::NUMBER_SIZE..offset_first]
+            .chunks_exact(molecule::NUMBER_SIZE)
+            .map(|x| molecule::unpack_number(x) as usize)
+            .collect();
+        offsets.push(total_size);
+        if offsets.windows(2).any(|i| i[0] > i[1]) {
+            return ve!(Self, OffsetsNotMatch);
+        }
+        Uint32Reader::verify(&slice[offsets[0]..offsets[1]], compatible)?;
+        HeaderReader::verify(&slice[offsets[1]..offsets[2]], compatible)?;
         Ok(())
     }
 }
@@ -4400,8 +3595,6 @@ pub struct SpvBootstrapBuilder {
     pub(crate) header: Header,
 }
 impl SpvBootstrapBuilder {
-    pub const TOTAL_SIZE: usize = 84;
-    pub const FIELD_SIZES: [usize; 2] = [4, 80];
     pub const FIELD_COUNT: usize = 2;
     pub fn height(mut self, v: Uint32) -> Self {
         self.height = v;
@@ -4416,9 +3609,21 @@ impl molecule::prelude::Builder for SpvBootstrapBuilder {
     type Entity = SpvBootstrap;
     const NAME: &'static str = "SpvBootstrapBuilder";
     fn expected_length(&self) -> usize {
-        Self::TOTAL_SIZE
+        molecule::NUMBER_SIZE * (Self::FIELD_COUNT + 1)
+            + self.height.as_slice().len()
+            + self.header.as_slice().len()
     }
     fn write<W: molecule::io::Write>(&self, writer: &mut W) -> molecule::io::Result<()> {
+        let mut total_size = molecule::NUMBER_SIZE * (Self::FIELD_COUNT + 1);
+        let mut offsets = Vec::with_capacity(Self::FIELD_COUNT);
+        offsets.push(total_size);
+        total_size += self.height.as_slice().len();
+        offsets.push(total_size);
+        total_size += self.header.as_slice().len();
+        writer.write_all(&molecule::pack_number(total_size as molecule::Number))?;
+        for offset in offsets.into_iter() {
+            writer.write_all(&molecule::pack_number(offset as molecule::Number))?;
+        }
         writer.write_all(self.height.as_slice())?;
         writer.write_all(self.header.as_slice())?;
         Ok(())
@@ -4471,7 +3676,7 @@ impl ::core::default::Default for SpvUpdate {
 }
 impl SpvUpdate {
     const DEFAULT_VALUE: [u8; 20] = [
-        20, 0, 0, 0, 12, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        20, 0, 0, 0, 12, 0, 0, 0, 16, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0,
     ];
     pub const FIELD_COUNT: usize = 2;
     pub fn total_size(&self) -> usize {
