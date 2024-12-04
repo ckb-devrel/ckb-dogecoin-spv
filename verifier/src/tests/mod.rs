@@ -7,7 +7,6 @@ mod bitcoin;
 mod dogecoin;
 
 pub(crate) mod data;
-pub(crate) mod testnet;
 pub(crate) mod utilities;
 
 pub(crate) fn setup() {
