@@ -30,9 +30,10 @@ fn test_spv_client(
             .parse()
             .unwrap();
         log::trace!("process header-{height} from file {}", header_bin.display());
+        let doge_header: core::DogecoinHeader = header.into();
         let bootstrap = packed::SpvBootstrap::new_builder()
             .height(height.pack())
-            .header(header.pack())
+            .header(doge_header.pack())
             .build();
         let expected_client = bootstrap
             .initialize_spv_client()
@@ -50,7 +51,7 @@ fn test_spv_client(
     let mut headers = Vec::new();
     let mut headers_group_size = 1;
     for header_bin in header_bins_iter {
-        let header: core::Header = utilities::decode_from_bin_file(&header_bin).unwrap();
+        let pure_header: core::Header = utilities::decode_from_bin_file(&header_bin).unwrap();
         let height: u32 = header_bin
             .file_stem()
             .unwrap()
@@ -60,7 +61,7 @@ fn test_spv_client(
             .unwrap();
         log::trace!("process header-{height} from file {}", header_bin.display());
 
-        headers.push(header);
+        headers.push(pure_header);
         if height + 1 != verify_tx_range.0 && headers.len() < headers_group_size {
             continue;
         }
@@ -68,13 +69,18 @@ fn test_spv_client(
         log::trace!("process {} headers at one time", headers.len());
         let update = if headers_group_size % 5 == 0 {
             let tmp_headers = mem::take(&mut headers);
-            let _update = service.update(tmp_headers.clone()).unwrap();
+            let tmp_doge_headers: Vec<core::DogecoinHeader> =
+                tmp_headers.iter().map(|h| h.clone().into()).collect();
+            let _update = service.update(tmp_doge_headers.clone()).unwrap();
             log::trace!("rollback to previous client (for test): {old_client}");
             service.rollback_to(old_client.unpack()).unwrap();
             log::trace!("process {} headers again", headers.len());
-            service.update(tmp_headers)
+            service.update(tmp_doge_headers)
         } else {
-            service.update(mem::take(&mut headers))
+            let tmp_headers = mem::take(&mut headers);
+            let tmp_doge_headers: Vec<core::DogecoinHeader> =
+                tmp_headers.iter().map(|h| h.clone().into()).collect();
+            service.update(tmp_doge_headers)
         }
         .unwrap();
         if verify_tx_range.0 <= height + 1 && height <= verify_tx_range.1 {

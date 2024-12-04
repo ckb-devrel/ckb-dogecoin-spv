@@ -51,7 +51,7 @@ impl DummyService {
         })
     }
 
-    pub fn update(&mut self, headers: Vec<core::Header>) -> Result<packed::SpvUpdate> {
+    pub fn update(&mut self, headers: Vec<core::DogecoinHeader>) -> Result<packed::SpvUpdate> {
         let mut mmr = {
             let last_index =
                 self.client.headers_mmr_root.max_height - self.client.headers_mmr_root.min_height;
@@ -63,14 +63,15 @@ impl DummyService {
         let mut block_hash = core::Hash::all_zeros();
         let mut height = self.client.headers_mmr_root.max_height;
 
-        for header in &headers {
+        for doge_header in &headers {
+            let header: core::Header = doge_header.clone().into();
             height += 1;
 
             let index = height - self.client.headers_mmr_root.min_height;
             let position = mmr::lib::leaf_index_to_pos(u64::from(index));
 
             block_hash = header.block_hash().into();
-            let digest = core::HeaderDigest::new_leaf(height, header).pack();
+            let digest = core::HeaderDigest::new_leaf(height, &header).pack();
 
             positions.push(position);
             mmr.push(digest)?;

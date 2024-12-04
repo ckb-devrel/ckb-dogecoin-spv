@@ -64,8 +64,9 @@ impl packed::SpvBootstrap {
             error!("the started height {height} should be multiples of {DIFFCHANGE_INTERVAL}");
             return Err(BootstrapError::Height);
         }
-        let header: core::Header =
+        let doge_header: core::DogecoinHeader =
             deserialize(&self.header().raw_data()).map_err(|_| BootstrapError::DecodeHeader)?;
+        let header: core::Header = doge_header.into();
         // Verify POW: just trust the input header.
         // TODO Check constants::FLAG_DISABLE_DIFFICULTY_CHECK before return errors.
         // let block_hash = header
@@ -132,8 +133,9 @@ impl packed::SpvClient {
         trace!("tip block hash: {new_tip_block_hash:#x}, max height: {new_max_height}");
         for header in update.headers().as_reader().iter() {
             new_max_height += 1;
-            let header: core::Header =
+            let doge_header: core::DogecoinHeader =
                 deserialize(header.raw_data()).map_err(|_| UpdateError::DecodeHeader)?;
+            let header: core::Header = doge_header.into();
             let block_hash = header.prev_blockhash.into();
             if new_tip_block_hash != block_hash {
                 error!("failed: headers are uncontinuous");
