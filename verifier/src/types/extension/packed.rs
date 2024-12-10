@@ -13,7 +13,7 @@ use crate::{
     error::{BootstrapError, UpdateError, VerifyTxError},
     types::{core, packed, prelude::*},
     utilities::{
-        bitcoin::calculate_next_target,
+        dogecoin::calculate_dogecoin_next_work_required,
         mmr::{
             self,
             lib::{leaf_index_to_mmr_size, leaf_index_to_pos},
@@ -155,7 +155,7 @@ impl packed::SpvClient {
                 // For mainnet and signet, `header.bits` should be as the same as `new_info.1`.
                 // But for testnet, it could be not.
                 if core::BitcoinChainType::Testnet != flags.into() {
-                    // return Err(UpdateError::Difficulty);
+                    return Err(UpdateError::Difficulty);
                 }
             }
             // Check POW.
@@ -174,8 +174,11 @@ impl packed::SpvClient {
                         // - For mainnet, `header.bits` should be as the same as `new_info.1`.
                         // - But for testnet, it could be not.
                         let prev_target = header.bits.into();
-                        let next_target =
-                            calculate_next_target(prev_target, new_info.0, header.time, flags);
+                        let next_target = calculate_dogecoin_next_work_required(
+                            prev_target,
+                            new_info.0,
+                            header.time,
+                        );
                         new_info.1 = next_target.to_compact_lossy();
                     }
                     // Current block is the first block for a new difficulty.
@@ -260,7 +263,7 @@ impl packed::SpvClient {
                 expect {new_target_adjust_info:#x} but got {:#x}",
                 new_client.target_adjust_info
             );
-            // return Err(UpdateError::ClientTargetAdjustInfo);
+            return Err(UpdateError::ClientTargetAdjustInfo);
         }
 
         Ok(())
