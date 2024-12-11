@@ -167,26 +167,11 @@ impl packed::SpvClient {
 
             // Update the target adjust info.
             {
-                match (new_max_height + 1) % DIFFCHANGE_INTERVAL {
-                    // Next block is the first block for a new difficulty.
-                    0 => {
-                        // See the above check:
-                        // - For mainnet, `header.bits` should be as the same as `new_info.1`.
-                        // - But for testnet, it could be not.
-                        let prev_target = header.bits.into();
-                        let next_target = calculate_dogecoin_next_work_required(
-                            prev_target,
-                            new_info.0,
-                            header.time,
-                        );
-                        new_info.1 = next_target.to_compact_lossy();
-                    }
-                    // Current block is the first block for a new difficulty.
-                    1 => {
-                        new_info.0 = header.time;
-                    }
-                    _ => {}
-                }
+                let prev_target = header.bits.into();
+                let next_target =
+                    calculate_dogecoin_next_work_required(prev_target, new_info.0, header.time);
+                new_info.1 = next_target.to_compact_lossy();
+                new_info.0 = header.time;
             }
             let digest = core::HeaderDigest::new_leaf(new_max_height, &header);
             trace!(
