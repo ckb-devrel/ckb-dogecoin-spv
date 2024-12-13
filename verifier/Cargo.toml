@@ -9,7 +9,7 @@ homepage = "https://github.com/ckb-cell/ckb-bitcoin-spv"
 repository = "https://github.com/ckb-cell/ckb-bitcoin-spv"
 
 [dependencies]
-bitcoin = { git = "https://github.com/EthanYuan/rust-bitcoin.git", rev = "9668223a", default-features = false }
+bitcoin = { git = "https://github.com/EthanYuan/rust-bitcoin.git", rev = "271c79da", default-features = false }
 bitcoin_hashes = { version = "0.13", default-features = false }
 primitive-types = { version = "0.12.2", default-features = false }
 molecule = { version = "=0.7.5", default-features = false }

@@ -66,14 +66,13 @@ impl packed::SpvBootstrap {
         }
         let doge_header: core::DogecoinHeader =
             deserialize(&self.header().raw_data()).map_err(|_| BootstrapError::DecodeHeader)?;
-        let header: core::Header = doge_header.into();
         // Verify POW: just trust the input header.
         // TODO Check constants::FLAG_DISABLE_DIFFICULTY_CHECK before return errors.
-        // let block_hash = header
-        //     .validate_pow(header.target())
-        //     .map_err(|_| BootstrapError::Pow)?
-        //     .into();
-        let block_hash = header.block_hash().to_raw_hash();
+        let block_hash = doge_header
+            .validate_doge_pow()
+            .map_err(|_| BootstrapError::Pow)?
+            .into();
+        let header: core::Header = doge_header.into();
         let target_adjust_info = packed::TargetAdjustInfo::encode(header.time, header.bits);
         let digest = core::HeaderDigest::new_leaf(height, &header);
         let client = core::SpvClient {
@@ -135,7 +134,7 @@ impl packed::SpvClient {
             new_max_height += 1;
             let doge_header: core::DogecoinHeader =
                 deserialize(header.raw_data()).map_err(|_| UpdateError::DecodeHeader)?;
-            let header: core::Header = doge_header.into();
+            let header: core::Header = doge_header.clone().into();
             let block_hash = header.prev_blockhash.into();
             if new_tip_block_hash != block_hash {
                 error!("failed: headers are uncontinuous");
@@ -159,11 +158,10 @@ impl packed::SpvClient {
                 }
             }
             // Check POW.
-            // new_tip_block_hash = header
-            //     .validate_pow(header.bits.into())
-            //     .map_err(|_| UpdateError::Pow)?
-            //     .into();
-            new_tip_block_hash = header.block_hash().to_raw_hash();
+            new_tip_block_hash = doge_header
+                .validate_doge_pow()
+                .map_err(|_| UpdateError::Pow)?
+                .into();
 
             // Update the target adjust info.
             {
