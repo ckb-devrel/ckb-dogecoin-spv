@@ -160,7 +160,14 @@ impl packed::SpvClient {
             // Check POW.
             new_tip_block_hash = doge_header
                 .validate_doge_pow()
-                .map_err(|_| UpdateError::Pow)?
+                .map_err(|e| {
+                    debug!(
+                        "failed: validate POW for header-{}, error: {}",
+                        header.block_hash(),
+                        e
+                    );
+                    UpdateError::Pow
+                })?
                 .into();
 
             // Update the target adjust info.

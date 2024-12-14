@@ -92,7 +92,7 @@ checksum = "349f9b6a179ed607305526ca489b34ad0a41aed5f7980fa90eb03160b69598fb"
 [[package]]
 name = "bitcoin"
 version = "0.31.1"
-source = "git+https://github.com/EthanYuan/rust-bitcoin.git?rev=271c79da#271c79dae1d00d98b89c85d7b784ea8fe3a7f223"
+source = "git+https://github.com/EthanYuan/rust-bitcoin.git?rev=625e6571#625e6571ff52dde0ce4d877510c998aefa55fe8e"
 dependencies = [
  "bech32",
  "bitcoin-internals",
