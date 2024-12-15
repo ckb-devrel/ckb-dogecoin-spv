@@ -2,10 +2,7 @@
 
 use alloc::{vec, vec::Vec};
 
-use bitcoin::{
-    blockdata::constants::DIFFCHANGE_INTERVAL,
-    consensus::{deserialize, encode::Error as EncodeError, serialize},
-};
+use bitcoin::consensus::{deserialize, encode::Error as EncodeError, serialize};
 use molecule::bytes::Bytes;
 
 use crate::{
@@ -60,8 +57,10 @@ impl packed::SpvBootstrap {
     /// [`DIFFCHANGE_INTERVAL`]: https://docs.rs/bitcoin/latest/bitcoin/blockdata/constants/constant.DIFFCHANGE_INTERVAL.html
     pub fn initialize_spv_client(&self, flags: u8) -> Result<core::SpvClient, BootstrapError> {
         let height: u32 = self.height().unpack();
-        if height % DIFFCHANGE_INTERVAL != 0 {
-            error!("the started height {height} should be multiples of {DIFFCHANGE_INTERVAL}");
+        // Make sure to start with a high enough block as a starting point to bypass historical compatibility issues.
+        // https://github.com/dogecoin/dogecoin/discussions/3404
+        if height < 2000000 {
+            error!("the started height {height} should be higher than 2000000");
             return Err(BootstrapError::Height);
         }
         let doge_header: core::DogecoinHeader =
