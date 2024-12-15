@@ -58,7 +58,7 @@ impl packed::SpvBootstrap {
     /// - [How often does the network difficulty change?](https://en.bitcoin.it/wiki/Difficulty#How_often_does_the_network_difficulty_change.3F)
     ///
     /// [`DIFFCHANGE_INTERVAL`]: https://docs.rs/bitcoin/latest/bitcoin/blockdata/constants/constant.DIFFCHANGE_INTERVAL.html
-    pub fn initialize_spv_client(&self) -> Result<core::SpvClient, BootstrapError> {
+    pub fn initialize_spv_client(&self, flags: u8) -> Result<core::SpvClient, BootstrapError> {
         let height: u32 = self.height().unpack();
         if height % DIFFCHANGE_INTERVAL != 0 {
             error!("the started height {height} should be multiples of {DIFFCHANGE_INTERVAL}");
@@ -69,7 +69,7 @@ impl packed::SpvBootstrap {
         // Verify POW: just trust the input header.
         // TODO Check constants::FLAG_DISABLE_DIFFICULTY_CHECK before return errors.
         let block_hash = doge_header
-            .validate_doge_pow()
+            .validate_doge_pow(core::BitcoinChainType::Testnet != flags.into())
             .map_err(|_| BootstrapError::Pow)?
             .into();
         let header: core::Header = doge_header.into();
@@ -159,7 +159,7 @@ impl packed::SpvClient {
             }
             // Check POW.
             new_tip_block_hash = doge_header
-                .validate_doge_pow()
+                .validate_doge_pow(core::BitcoinChainType::Testnet != flags.into())
                 .map_err(|e| {
                     debug!(
                         "failed: validate POW for header-{}, error: {}",
