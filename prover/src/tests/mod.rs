@@ -2,7 +2,6 @@ use env_logger::{Builder, Target};
 use log::LevelFilter;
 
 mod block;
-mod service;
 
 pub(crate) mod data;
 

@@ -63,7 +63,7 @@ pub(crate) fn find_bin_file(in_dir: &str, filename: &str) -> PathBuf {
     root().join(in_dir).join(filename)
 }
 
-pub(crate) fn _find_dogebin_bin_file(in_dir: &str, filename: &str) -> PathBuf {
+pub(crate) fn find_dogebin_bin_file(in_dir: &str, filename: &str) -> PathBuf {
     dogeroot().join(in_dir).join(filename)
 }
 
