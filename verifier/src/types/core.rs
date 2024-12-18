@@ -15,6 +15,7 @@ use alloc::vec::Vec;
 
 pub use bitcoin::{
     blockdata::{block::Header, transaction::Transaction},
+    dogecoin::DogecoinHeader,
     hash_types::Txid,
     merkle_tree::MerkleBlock,
     pow::{CompactTarget, Target},

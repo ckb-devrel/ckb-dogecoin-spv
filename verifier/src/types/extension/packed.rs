@@ -2,10 +2,7 @@
 
 use alloc::{vec, vec::Vec};
 
-use bitcoin::{
-    blockdata::constants::DIFFCHANGE_INTERVAL,
-    consensus::{deserialize, encode::Error as EncodeError, serialize},
-};
+use bitcoin::consensus::{deserialize, encode::Error as EncodeError, serialize};
 use molecule::bytes::Bytes;
 
 use crate::{
@@ -13,7 +10,7 @@ use crate::{
     error::{BootstrapError, UpdateError, VerifyTxError},
     types::{core, packed, prelude::*},
     utilities::{
-        bitcoin::calculate_next_target,
+        dogecoin::calculate_dogecoin_next_work_required,
         mmr::{
             self,
             lib::{leaf_index_to_mmr_size, leaf_index_to_pos},
@@ -58,20 +55,23 @@ impl packed::SpvBootstrap {
     /// - [How often does the network difficulty change?](https://en.bitcoin.it/wiki/Difficulty#How_often_does_the_network_difficulty_change.3F)
     ///
     /// [`DIFFCHANGE_INTERVAL`]: https://docs.rs/bitcoin/latest/bitcoin/blockdata/constants/constant.DIFFCHANGE_INTERVAL.html
-    pub fn initialize_spv_client(&self) -> Result<core::SpvClient, BootstrapError> {
+    pub fn initialize_spv_client(&self, flags: u8) -> Result<core::SpvClient, BootstrapError> {
         let height: u32 = self.height().unpack();
-        if height % DIFFCHANGE_INTERVAL != 0 {
-            error!("the started height {height} should be multiples of {DIFFCHANGE_INTERVAL}");
+        // Make sure to start with a high enough block as a starting point to bypass historical compatibility issues.
+        // https://github.com/dogecoin/dogecoin/discussions/3404
+        if height < 2000000 {
+            error!("the started height {height} should be higher than 2000000");
             return Err(BootstrapError::Height);
         }
-        let header: core::Header =
+        let doge_header: core::DogecoinHeader =
             deserialize(&self.header().raw_data()).map_err(|_| BootstrapError::DecodeHeader)?;
         // Verify POW: just trust the input header.
         // TODO Check constants::FLAG_DISABLE_DIFFICULTY_CHECK before return errors.
-        let block_hash = header
-            .validate_pow(header.target())
+        let block_hash = doge_header
+            .validate_doge_pow(core::BitcoinChainType::Testnet != flags.into())
             .map_err(|_| BootstrapError::Pow)?
             .into();
+        let header: core::Header = doge_header.into();
         let target_adjust_info = packed::TargetAdjustInfo::encode(header.time, header.bits);
         let digest = core::HeaderDigest::new_leaf(height, &header);
         let client = core::SpvClient {
@@ -131,8 +131,9 @@ impl packed::SpvClient {
         trace!("tip block hash: {new_tip_block_hash:#x}, max height: {new_max_height}");
         for header in update.headers().as_reader().iter() {
             new_max_height += 1;
-            let header: core::Header =
+            let doge_header: core::DogecoinHeader =
                 deserialize(header.raw_data()).map_err(|_| UpdateError::DecodeHeader)?;
+            let header: core::Header = doge_header.clone().into();
             let block_hash = header.prev_blockhash.into();
             if new_tip_block_hash != block_hash {
                 error!("failed: headers are uncontinuous");
@@ -156,30 +157,25 @@ impl packed::SpvClient {
                 }
             }
             // Check POW.
-            new_tip_block_hash = header
-                .validate_pow(header.bits.into())
-                .map_err(|_| UpdateError::Pow)?
+            new_tip_block_hash = doge_header
+                .validate_doge_pow(core::BitcoinChainType::Testnet != flags.into())
+                .map_err(|e| {
+                    debug!(
+                        "failed: validate POW for header-{}, error: {}",
+                        header.block_hash(),
+                        e
+                    );
+                    UpdateError::Pow
+                })?
                 .into();
 
             // Update the target adjust info.
             {
-                match (new_max_height + 1) % DIFFCHANGE_INTERVAL {
-                    // Next block is the first block for a new difficulty.
-                    0 => {
-                        // See the above check:
-                        // - For mainnet, `header.bits` should be as the same as `new_info.1`.
-                        // - But for testnet, it could be not.
-                        let prev_target = header.bits.into();
-                        let next_target =
-                            calculate_next_target(prev_target, new_info.0, header.time, flags);
-                        new_info.1 = next_target.to_compact_lossy();
-                    }
-                    // Current block is the first block for a new difficulty.
-                    1 => {
-                        new_info.0 = header.time;
-                    }
-                    _ => {}
-                }
+                let prev_target = header.bits.into();
+                let next_target =
+                    calculate_dogecoin_next_work_required(prev_target, new_info.0, header.time);
+                new_info.1 = next_target.to_compact_lossy();
+                new_info.0 = header.time;
             }
             let digest = core::HeaderDigest::new_leaf(new_max_height, &header);
             trace!(

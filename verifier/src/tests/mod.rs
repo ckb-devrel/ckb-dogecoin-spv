@@ -4,10 +4,9 @@ use env_logger::{Builder, Target};
 use log::LevelFilter;
 
 mod bitcoin;
+mod dogecoin;
 
 pub(crate) mod data;
-pub(crate) mod signet;
-pub(crate) mod testnet;
 pub(crate) mod utilities;
 
 pub(crate) fn setup() {

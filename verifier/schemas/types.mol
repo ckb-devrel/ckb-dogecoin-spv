@@ -8,7 +8,7 @@ array Uint32 [byte; 4];
 array Uint256 [byte; 32];
 array Hash [byte; 32];
 
-array Header [byte; 80];
+vector Header <byte>;
 vector HeaderVec <Header>;
 
 vector Bytes <byte>;
@@ -62,7 +62,7 @@ struct SpvTypeArgs {
 // Witnesses
 //
 
-struct SpvBootstrap {
+table SpvBootstrap {
     height: Uint32,
     header: Header,
 }

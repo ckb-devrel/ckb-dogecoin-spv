@@ -1,6 +1,7 @@
 use alloc::vec::Vec;
 
 use bitcoin::consensus::serialize;
+use molecule::prelude::Byte;
 use primitive_types::U256;
 
 use crate::types::{bytes::Bytes, core, packed, prelude::*};
@@ -31,15 +32,14 @@ impl Pack<packed::Hash> for core::Hash {
     }
 }
 
-impl Pack<packed::Header> for core::Header {
+impl Pack<packed::Header> for core::DogecoinHeader {
     fn pack(&self) -> packed::Header {
-        let vec = serialize(self);
-        let data = molecule::bytes::Bytes::from(vec);
-        packed::Header::new_unchecked(data)
+        let vec: Vec<Byte> = serialize(self).into_iter().map(|b| b.into()).collect();
+        packed::Header::new_builder().set(vec).build()
     }
 }
 
-impl Pack<packed::HeaderVec> for Vec<core::Header> {
+impl Pack<packed::HeaderVec> for Vec<core::DogecoinHeader> {
     fn pack(&self) -> packed::HeaderVec {
         packed::HeaderVec::new_builder()
             .set(self.iter().map(|v| v.pack()).collect())
