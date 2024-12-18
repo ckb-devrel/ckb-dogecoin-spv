@@ -1,27 +1,20 @@
-# CKB Bitcoin SPV
+# CKB Dogecoin SPV
 
 [![License]](#license)
-[![GitHub Actions]](https://github.com/ckb-cell/ckb-bitcoin-spv/actions)
 
-> [!WARNING]
-> This repository is still in the proof-of-concept stage.
-
-A [Bitcoin] SPV library, which is used to develop Bitcoin SPV on [CKB].
+A [Dogecoin] SPV library, based on the design of the Bitcoin SPV library, which is used to develop Bitcoin SPV on [CKB].
 
 [License]: https://img.shields.io/badge/License-MIT-blue.svg
-[GitHub Actions]: https://github.com/ckb-cell/ckb-bitcoin-spv/workflows/CI/badge.svg
 
 ## Resources
 
 - [The Design of CKB Bitcoin SPV](docs/Design.md)
 
-- [The Official Reference Implementation](https://github.com/ckb-cell/ckb-bitcoin-spv-contracts)
-
 ## License
 
 Licensed under [MIT License].
 
-[Bitcoin]: https://bitcoin.org
+[Dogecoin]: https://https://dogecoin.com/
 [CKB]: https://github.com/nervosnetwork/ckb
 
 [MIT License]: LICENSE
